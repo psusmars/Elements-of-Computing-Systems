@@ -1,0 +1,369 @@
+function Math.init 0
+push constant 0
+return
+function Math.abs 0
+push argument 0
+push constant 0
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+return
+goto IF_END0
+label IF_FALSE0
+push argument 0
+push constant 1
+neg
+call Math.multiply 2
+return
+label IF_END0
+function Math.multiply 3
+push argument 1
+pop local 2
+push argument 1
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+push argument 1
+sub
+push argument 1
+sub
+pop local 2
+label IF_FALSE0
+push constant 0
+pop local 1
+push constant 0
+pop local 0
+push argument 0
+push constant 0
+eq
+push argument 1
+or
+push constant 0
+eq
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push constant 0
+return
+label IF_FALSE1
+label WHILE_EXP0
+push local 1
+push local 2
+lt
+not
+if-goto WHILE_END0
+push local 0
+push argument 0
+add
+pop local 0
+push local 1
+push constant 1
+add
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push argument 0
+push constant 0
+lt
+push argument 1
+push constant 0
+lt
+and
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push local 0
+push local 0
+sub
+push local 0
+sub
+return
+goto IF_END2
+label IF_FALSE2
+push argument 1
+push constant 0
+lt
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+push local 0
+sub
+push local 0
+sub
+return
+label IF_FALSE3
+push argument 0
+push constant 0
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
+return
+label IF_FALSE4
+push local 0
+return
+label IF_END2
+function Math.divide 3
+push argument 1
+pop local 1
+push argument 0
+pop local 2
+push argument 1
+push constant 0
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 1
+neg
+pop local 1
+label IF_FALSE0
+push argument 0
+push constant 0
+lt
+if-goto IF_TRUE1
+goto IF_FALSE1
+label IF_TRUE1
+push argument 0
+neg
+pop local 2
+label IF_FALSE1
+push constant 0
+pop local 0
+push argument 0
+push constant 0
+eq
+push argument 1
+or
+push constant 0
+eq
+if-goto IF_TRUE2
+goto IF_FALSE2
+label IF_TRUE2
+push constant 0
+return
+label IF_FALSE2
+label WHILE_EXP0
+push local 2
+push local 1
+gt
+push local 2
+push local 1
+eq
+or
+not
+if-goto WHILE_END0
+push local 2
+push local 1
+sub
+pop local 2
+push local 0
+push constant 1
+add
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push argument 0
+push constant 0
+lt
+push argument 1
+push constant 0
+lt
+and
+push argument 0
+push constant 0
+gt
+push argument 1
+push constant 0
+gt
+and
+or
+if-goto IF_TRUE3
+goto IF_FALSE3
+label IF_TRUE3
+push local 0
+return
+goto IF_END3
+label IF_FALSE3
+push argument 1
+push constant 0
+lt
+if-goto IF_TRUE4
+goto IF_FALSE4
+label IF_TRUE4
+push local 0
+push local 0
+sub
+push local 0
+sub
+return
+label IF_FALSE4
+push argument 0
+push constant 0
+lt
+if-goto IF_TRUE5
+goto IF_FALSE5
+label IF_TRUE5
+push local 0
+push local 0
+sub
+push local 0
+sub
+return
+label IF_FALSE5
+push local 0
+return
+label IF_END3
+function Math.sqrt 3
+push constant 0
+pop local 0
+push constant 8
+push constant 1
+sub
+pop local 1
+label WHILE_EXP0
+push local 1
+push constant 0
+gt
+push local 1
+push constant 0
+eq
+or
+not
+if-goto WHILE_END0
+push local 0
+push local 1
+call Math.twoRaisedToThe 1
+add
+push local 0
+push local 1
+call Math.twoRaisedToThe 1
+add
+call Math.multiply 2
+pop local 2
+push local 2
+push argument 0
+lt
+push local 2
+push argument 0
+eq
+or
+push local 2
+push constant 0
+gt
+and
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push local 0
+push local 1
+call Math.twoRaisedToThe 1
+add
+pop local 0
+label IF_FALSE0
+push local 1
+push constant 1
+sub
+pop local 1
+goto WHILE_EXP0
+label WHILE_END0
+push local 0
+return
+function Math.max 0
+push argument 0
+push argument 1
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+return
+goto IF_END0
+label IF_FALSE0
+push argument 1
+return
+label IF_END0
+function Math.min 0
+push argument 0
+push argument 1
+lt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+return
+goto IF_END0
+label IF_FALSE0
+push argument 1
+return
+label IF_END0
+function Math.getNumberOfBitsOf 2
+push constant 15
+pop local 0
+push constant 0
+pop local 1
+label WHILE_EXP0
+push local 0
+push constant 1
+neg
+gt
+not
+if-goto WHILE_END0
+push argument 0
+push local 0
+call Math.twoRaisedToThe 1
+sub
+push constant 1
+neg
+gt
+if-goto IF_TRUE0
+goto IF_FALSE0
+label IF_TRUE0
+push argument 0
+push local 0
+call Math.twoRaisedToThe 1
+sub
+pop argument 0
+push local 1
+push constant 1
+add
+pop local 1
+label IF_FALSE0
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 1
+return
+function Math.twoRaisedToThe 2
+push constant 1
+pop local 1
+push argument 0
+pop local 0
+label WHILE_EXP0
+push local 0
+push constant 0
+gt
+not
+if-goto WHILE_END0
+push local 1
+push constant 2
+call Math.multiply 2
+pop local 1
+push local 0
+push constant 1
+sub
+pop local 0
+goto WHILE_EXP0
+label WHILE_END0
+push local 1
+return

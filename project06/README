@@ -1,0 +1,8 @@
+Assembler for Elements of Computing Systems
+Feb. 23, 2011
+README
+
+The driver program for my assembler is Assembler.jar.  To run my assembler you must run it from a command window passing in the file extension for a parameter for example:
+Directory> Assembler.jar rect/Rect.asm
+The file passed in must be an assembly file of type ".asm", and upon execution, a ".hack" binary file will be generated to the same file location as the assembly file. So in this example the output would be found as such:
+Directory\rect\Rect.hack

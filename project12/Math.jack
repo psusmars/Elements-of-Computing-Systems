@@ -1,0 +1,143 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/12/Math.jack
+
+/**
+ * A basic math library.
+ */
+class Math {
+
+    /** Initializes the library. */
+    function void init() {
+		return;
+    }
+
+    /** Returns the absolute value of x. */
+    function int abs(int x) {
+		if(x>0){
+			return x;}
+		else{
+			return x*-1;}
+    }
+
+    /** Returns the product of x and y. */
+    function int multiply(int x, int y) {
+		var int sum, i, multiplier;
+		let multiplier = y;
+		if(y<0){
+			let multiplier = y-y-y;
+		}
+		let i = 0;
+		let sum = 0;
+		if(x=0|y=0)
+		{
+			return 0;
+		}
+		while(i<multiplier)
+		{
+			let sum = sum + x;
+			let i = i + 1;
+		}
+		if((x<0)&(y<0)){
+			return sum - sum - sum;}
+		else{
+			if(y<0){
+				return sum - sum - sum;}
+			if(x<0){
+				return sum;}
+			return sum;
+		}
+    }
+
+    /** Returns the integer part of x/y. */
+    function int divide(int x, int y) {
+		var int result, divisor, dividend;
+		let divisor = y;
+		let dividend = x;
+		if(y<0){
+			let divisor = -y;
+		}
+		if(x<0){
+			let dividend  = -x;
+		}
+		let result = 0;
+		if(x=0|y=0)
+		{
+			return 0;
+		}
+		while((dividend>divisor)|(dividend=divisor))
+		{
+			let dividend = dividend - divisor;
+			let result = result + 1;
+		}
+		if(((x<0)&(y<0))|((x>0)&(y>0))){
+			return result;}
+		else{
+			if(y<0){
+				return result - result - result;}
+			if(x<0){
+				return result - result - result;}
+			return result;
+		}
+    }
+
+    /** Returns the integer part of the square root of x. */
+    function int sqrt(int x) {
+		var int y,j, squared;
+		let y = 0;
+		let j = 8-1;
+		while((j>0)|(j=0))
+		{
+			let squared  = (y+ Math.twoRaisedToThe(j))*(y+ Math.twoRaisedToThe(j));
+			if( ((squared<x)|(squared=x))&(squared>0)){
+				let y = y+ Math.twoRaisedToThe(j);}
+			let j = j-1;
+		}
+		return y;
+    }
+
+    /** Returns the greater number. */
+    function int max(int a, int b) {
+		if(a>b){
+			return a;}
+		else{
+			return b;}
+    }
+
+    /** Returns the smaller number. */
+    function int min(int a, int b) {
+		if(a<b){
+			return a;}
+		else{
+			return b;}
+    }
+	
+	function int getNumberOfBitsOf( int x){
+		var int j, bits;
+		let j = 15;
+		let bits = 0;
+		while(j>-1)
+		{
+			if((x-Math.twoRaisedToThe(j))>-1){
+				let x = x-Math.twoRaisedToThe(j);
+				let bits = bits + 1;
+			}
+			let j = j-1;
+		}
+		return bits;
+	}
+	
+	function int twoRaisedToThe(int j)
+	{
+		var int i, number;
+		let number = 1;
+		let i = j;
+		while(i>0)
+		{
+			let number = number * 2;
+			let i = i -1;
+		}
+		return number;
+	}
+}

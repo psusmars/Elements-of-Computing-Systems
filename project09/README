@@ -1,0 +1,17 @@
+I think, therefore I am not a square.
+How to play SnakeLike Game:
+
+1)Load the program into the VM
+2)Set the program speed to max
+3)Set the program flow to 'No Animation'
+4)Run the program
+5)Follow the instructions and enjoy
+
+The game prompts you to enter the speed of the square. 1 being the fastest and 10 being the slowest.
+Enter your preferred difficulty and press the return key.
+
+Your square then appears on the screen with the first collectable blob. Your square is the larger square in the center.
+Control your square with the arrow keys.
+If you collect all the blobs without hitting the walls, you win!
+
+You may also quit the game after the game has started by pressing 'q'.

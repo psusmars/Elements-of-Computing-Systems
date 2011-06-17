@@ -1,0 +1,16 @@
+Jack Compiler for Elements of Computing Systems
+May 1, 2011
+Authors: Alex Turner, Lex Hubbard, Paul Susmarski
+README
+
+The driver program for our Jack Compiler is JackCompiler.Jar.  To run our compiler you must run it from a command window passing in the file extension for a parameter for example:
+Directory> JackCompiler.Jar SomeFolder/SomeFile.vm
+You can also pass in a folder as a parameter i.e.
+Directory> JackCompiler.Jar SomeFolder/
+	Assume some folder has: Main.jack, foo.jack, bar.jack
+	In this case, the folder will load all ".jack" files and create a ".vm" file for each file in the director, i.e.
+	Directory\SomeFolder\Main.vm
+	Directory\SomeFolder\foo.vm
+	Directory\SomeFolder\bar.vm
+The file passed in must be a source file of type ".jack" (for the first case), and upon execution, a ".vm" virtual machine file will be generated to the same file location as the source file. So in this example the output would be found as such:
+Directory\SomeFolder\SomeFile.vm

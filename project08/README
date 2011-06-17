@@ -1,0 +1,15 @@
+VM Translator for Elements of Computing Systems
+March 22, 2011
+README
+
+The driver program for my Virtual Machine Translator is VMTranslator.Jar.  To run my compiler you must run it from a command window passing in the file extension for a parameter for example:
+Directory> VMTranslator.Jar SomeFolder/SomeFile.vm
+You can also pass in a folder as a parameter i.e.
+Directory> VMTranslator.Jar SomeFolder/
+	In this case, the folder will load all ".vm" files and combine all the code into one ".asm" file, with the same name as the folder, i.e.
+	Directory\SomeFolder\SomeFolder.asm
+The file passed in must be a virtual machine file of type ".vm" (for the first case), and upon execution, a ".asm" hack file will be generated to the same file location as the virtual machine file. So in this example the output would be found as such:
+Directory\SomeFolder\SomeFile.asm
+
+WARNING!!!
+My parser assumes that there has to be the system initialization added at the beginning of every ".asm" file.  So it will only work on folders that include the Sys.vm file.

@@ -1,0 +1,49 @@
+// This file is part of the materials accompanying the book 
+// "The Elements of Computing Systems" by Nisan and Schocken, 
+// MIT Press. Book site: www.idc.ac.il/tecs
+// File name: projects/03/1/RAM8.hdl
+
+/**
+ * Memory of 8 registers, each 16-bit wide.  
+ * The chip facilitates read and write operations, as follows:
+ *     Read:  out(t) = RAM8[address(t)](t)
+ *     Write: If load(t-1) then RAM8[address(t-1)](t) = in(t-1)
+ * In words: the chip always outputs the value stored at the memory 
+ * location specified by address. If load=1, the in value is loaded 
+ * into the memory location specified by address.  This value becomes 
+ * available through the out output starting from the next time step.
+ */
+
+CHIP RAM8 {
+
+    IN  in[16], load, address[3];
+    OUT out[16];
+
+    PARTS:
+	/**
+	*So first what happens is the Dmultiplexor takes the load as an input
+	*Then depending on what the address is, it'll transfer the load value to
+	*that ouput (for example, load is currently set to 1, and I want to write 
+	*to whatever is at address 000 (which is a), so all other output of the
+	*DMux will be set to 0, so that I'm not actually fooling with any other register
+	*and the load for the register at 000 will be set to 1 so I can write whatever
+	*my input is to register a)
+	*/
+	DMux8Way(in=load, a=DmuxOut1, b=DmuxOut2, c=DmuxOut3,
+		d=DmuxOut4, e=DmuxOut5, f=DmuxOut6, g=DmuxOut7, h=DmuxOut8, sel[0..2]=address[0..2]);  
+	//From here I just take all outputs from the DMUX and put them into corresponding registers
+	//Nothing will happened unless the original load was set to 1
+	Register(in=in, load=DmuxOut1, out=regOut1);
+	Register(in=in, load=DmuxOut2, out=regOut2);
+	Register(in=in, load=DmuxOut3, out=regOut3);
+	Register(in=in, load=DmuxOut4, out=regOut4);
+	Register(in=in, load=DmuxOut5, out=regOut5);
+	Register(in=in, load=DmuxOut6, out=regOut6);
+	Register(in=in, load=DmuxOut7, out=regOut7);
+	Register(in=in, load=DmuxOut8, out=regOut8);
+
+	//After I have the outputs of all the registers I route them to a multiplexor
+	//I can then use the address value to select whatever register I wanted.
+	Mux8Way16(a=regOut1, b=regOut2, c=regOut3, d=regOut4,
+		e=regOut5, f=regOut6, g=regOut7, h=regOut8, sel=address, out=out);
+}
